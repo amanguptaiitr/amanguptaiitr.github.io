@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aman Gupta — PM &amp; Builder</title>
+<meta name="description" content="Aman Gupta — Senior Staff PM at Intuit. Building AI products. Personal projects in iOS and LLM-powered apps." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fafaf7;
+    --bg-elevated: #ffffff;
+    --ink: #14130f;
+    --ink-soft: #5a584f;
+    --ink-muted: #8a877c;
+    --rule: #e8e6df;
+    --rule-strong: #d8d4c8;
+    --accent: #b8512c;
+    --accent-soft: #f4ebe5;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    padding: 80px 0 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .name-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #d97a4d);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .name-block h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 4px;
+  }
+
+  .name-block .role {
+    color: var(--ink-muted);
+    font-size: 15px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.01em;
+  }
+
+  .bio {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 0 16px;
+  }
+
+  .bio em {
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .links {
+    display: flex;
+    gap: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .links a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .links a:hover {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ============ SECTION ============ */
+  section {
+    padding: 28px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+
+  /* ============ PROJECT GRID ============ */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .tile {
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    font-family: inherit;
+    width: 100%;
+    color: inherit;
+    min-height: 170px;
+  }
+
+  .tile:hover {
+    border-color: var(--rule-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -12px rgba(20,19,15,0.12);
+  }
+
+  .tile.is-open {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .tile-icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .tile-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .tile-tagline {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  .tile-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  .tile.is-open .tile-cta::before { content: "Close "; }
+  .tile:not(.is-open) .tile-cta::before { content: "Read more "; }
+  .tile-cta::after {
+    content: "→";
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .tile.is-open .tile-cta::after {
+    transform: rotate(90deg);
+  }
+
+  /* ============ DETAIL (full-width row) ============ */
+  .detail-row {
+    grid-column: 1 / -1;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  }
+
+  .detail-row.is-open {
+    max-height: 2000px;
+    opacity: 1;
+  }
+
+  .detail-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule-strong);
+    border-radius: 12px;
+    padding: 40px 44px;
+    margin-top: 8px;
+  }
+
+  .detail-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .detail-icon {
+    font-size: 40px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .detail-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+
+  .detail-tagline {
+    color: var(--ink-muted);
+    font-size: 15px;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .detail-body {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  .detail-body p { margin: 0 0 16px; }
+  .detail-body p:last-child { margin-bottom: 0; }
+  .detail-body em {
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .detail-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .repo-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    margin-left: auto;
+  }
+  .repo-link:hover {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
+  .repo-link::after {
+    content: " ↗";
+    opacity: 0.6;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 80px;
+    color: var(--ink-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  /* ============ MOTION ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, section, footer {
+    animation: fadeUp 0.6s ease forwards;
+  }
+  section:nth-of-type(1) { animation-delay: 0.1s; opacity: 0; }
+  footer { animation-delay: 0.2s; opacity: 0; }
+
+  /* ============ TABLET (2x2) ============ */
+  @media (max-width: 900px) {
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============ MOBILE (stack) ============ */
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+    header { padding: 48px 0 32px; }
+    .name-row { gap: 16px; }
+    .avatar { width: 56px; height: 56px; font-size: 22px; }
+    .name-block h1 { font-size: 26px; }
+    .bio { font-size: 17px; }
+    section { padding: 40px 0; }
+    .project-grid { grid-template-columns: 1fr; gap: 12px; }
+    .tile { min-height: 0; }
+    .detail-card { padding: 28px 24px; }
+    .detail-card h3 { font-size: 22px; }
+    .detail-head { gap: 14px; }
+    .detail-icon { font-size: 32px; }
+    .links { flex-wrap: wrap; gap: 16px; }
+    .detail-meta { gap: 12px; }
+    .repo-link { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="name-row">
+        <div class="avatar">AG</div>
+        <div class="name-block">
+          <h1>Aman Gupta</h1>
+          <div class="role">PM &amp; Builder</div>
+        </div>
+      </div>
+
+      <p class="bio">
+        I'm a Senior Staff PM at Intuit, where I ship <em>agentic AI products</em> for TurboTax Full Service. Before that, I spent nearly a decade at LinkedIn leading Signup Growth &amp; Onboarding. Outside of work, I build small apps on Claude — usually to solve problems I'm personally having. The four below are all live, all used by me, and the best way I know to stay close to what it actually feels like to build with frontier AI.
+      </p>
+
+      <div class="links">
+        <a href="https://linkedin.com/in/aman-gupta-iitr" target="_blank" rel="noopener">linkedin</a>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-label">Personal projects</div>
+
+      <div class="project-grid">
+
+        <button class="tile" data-target="d1" aria-expanded="false" aria-controls="d1">
+          <div class="tile-icon">💰</div>
+          <div>
+            <div class="tile-name">Invest</div>
+            <div class="tile-tagline">All-in-one finance app</div>
+          </div>
+          <div class="tile-cta"></div>
+        </button>
+
+        <button class="tile" data-target="d2" aria-expanded="false" aria-controls="d2">
+          <div class="tile-icon">🍽️</div>
+          <div>
+            <div class="tile-name">DishMatch</div>
+            <div class="tile-tagline">Find food that matches your preferences</div>
+          </div>
+          <div class="tile-cta"></div>
+        </button>
+
+        <button class="tile" data-target="d3" aria-expanded="false" aria-controls="d3">
+          <div class="tile-icon">📋</div>
+          <div>
+            <div class="tile-name">Task Tracker</div>
+            <div class="tile-tagline">Stay on track with AI</div>
+          </div>
+          <div class="tile-cta"></div>
+        </button>
+
+        <button class="tile" data-target="d4" aria-expanded="false" aria-controls="d4">
+          <div class="tile-icon">👶</div>
+          <div>
+            <div class="tile-name">Baby Name</div>
+            <div class="tile-tagline">Collaborate on the perfect baby name</div>
+          </div>
+          <div class="tile-cta"></div>
+        </button>
+
+        <div class="detail-row" id="d1">
+          <div class="detail-card">
+            <div class="detail-head">
+              <div class="detail-icon">💰</div>
+              <div>
+                <h3>Invest</h3>
+                <p class="detail-tagline">A one-stop iOS app for personal finance, tax, and investment decisions.</p>
+              </div>
+            </div>
+            <div class="detail-body">
+              <p>Invest is a private iOS app I built to be the financial advisor I wished I had. It does three things, all in one place:</p>
+              <p><em>Portfolio across accounts.</em> One view of my full portfolio — brokerage, 401(k), and everything in between — with live prices for every stock and fund, and growth tracked over time. No more switching between five logins to figure out where I actually stand.</p>
+              <p><em>Tax optimization.</em> It reads through my 1040, understands what deductions I've already taken, and surfaces ones I haven't. It also helps me actively reduce my tax bill — recommending which lots to sell, when to tax-loss harvest, and how to use direct indexing as a strategy rather than a buzzword.</p>
+              <p><em>Short options strategy.</em> A weekly tool for surfacing interesting options-selling opportunities — not just from traditional IV / IV rank signals, but also factoring in macro events: rate announcements, jobs reports, sector-specific performance.</p>
+              <p>Built with SwiftUI, Firebase (Firestore, Auth, Cloud Functions), and Claude as both the development partner and the reasoning layer.</p>
+            </div>
+            <div class="detail-meta">
+              <div class="tags">
+                <span class="tag">iOS</span>
+                <span class="tag">SwiftUI</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Claude API</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-row" id="d2">
+          <div class="detail-card">
+            <div class="detail-head">
+              <div class="detail-icon">🍽️</div>
+              <div>
+                <h3>DishMatch</h3>
+                <p class="detail-tagline">Find the right <em>dish</em>, not just the right restaurant.</p>
+              </div>
+            </div>
+            <div class="detail-body">
+              <p>I'm the user for this one. As a vegetarian, "vegetarian-friendly" American restaurants too often means "we have a salad." DishMatch is the app I built so I could find actual <em>meals</em> — food I'd consider a meal — at restaurants near me or at a specific destination.</p>
+              <p>It surfaces specific dishes that match your dietary preferences (vegetarian, vegan, flexitarian, pescatarian) rather than filtering at the restaurant level. You can also search for a specific dish at a specific restaurant to see whether it actually fits what you eat.</p>
+              <p>Built around the idea that LLMs are good enough to reason about menus and ingredients the way a person would — instead of brittle keyword filters that miss the point.</p>
+            </div>
+            <div class="detail-meta">
+              <div class="tags">
+                <span class="tag">AI Search</span>
+                <span class="tag">LLM reasoning</span>
+                <span class="tag">Consumer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-row" id="d3">
+          <div class="detail-card">
+            <div class="detail-head">
+              <div class="detail-icon">📋</div>
+              <div>
+                <h3>Task Tracker</h3>
+                <p class="detail-tagline">A todo app that helps you figure out what actually matters this week.</p>
+              </div>
+            </div>
+            <div class="detail-body">
+              <p>Built from my own pain. I'd been using Apple Reminders for years and ended up with hundreds of unordered items — none of which told me what I should actually do <em>today</em>. The hard part of task management isn't capture; it's deciding what's urgent and important when everything feels urgent and important.</p>
+              <p>This app learns my preferences and historical signals — what I've treated as urgent, what I've treated as important, what tends to become a problem when neglected — and surfaces the few things I should focus on this week. It helps me stay ahead of the things that quietly become issues over time.</p>
+            </div>
+            <div class="detail-meta">
+              <div class="tags">
+                <span class="tag">Productivity</span>
+                <span class="tag">LLM prioritization</span>
+                <span class="tag">Personal data</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-row" id="d4">
+          <div class="detail-card">
+            <div class="detail-head">
+              <div class="detail-icon">👶</div>
+              <div>
+                <h3>Baby Name</h3>
+                <p class="detail-tagline">An AI-powered name evaluator for two people who can't agree on anything.</p>
+              </div>
+            </div>
+            <div class="detail-body">
+              <p>My partner and I were trying to pick a name for our baby, and we kept running into the same checks: does it have a real Indian meaning, is it pronounceable internationally, is it modern without being trendy, and — critically — does it mean anything terrible in another language somewhere?</p>
+              <p>This app does that work for us. We drop in any name we like, and it surfaces meaning, origin, modernity, pronunciation across languages, and whether it has any unfortunate associations elsewhere in the world. When both of us like a name, it bubbles up in our shared shortlist.</p>
+              <p>A small, very specific app for a very specific problem — built fast and used daily.</p>
+            </div>
+            <div class="detail-meta">
+              <div class="tags">
+                <span class="tag">LLM</span>
+                <span class="tag">Collaborative</span>
+                <span class="tag">Personal tools</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      Built with Claude. Hosted on GitHub Pages.
+    </footer>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const targetId = tile.getAttribute('data-target');
+        const detail = document.getElementById(targetId);
+        const isOpen = detail.classList.toggle('is-open');
+        tile.classList.toggle('is-open', isOpen);
+        tile.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  </script>
+</body>
+</html>
